@@ -1,11 +1,12 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Animal_Sanctuary.Models;
+using Moq;
 
 namespace Animal_Sanctuary.Tests
 {
 
     [TestClass]
-    public class VeterinarianTests
+    public class AnimalControllerTests
     {
         [TestMethod]
         public void GetName_ReturnsVeterinarianName_String()
@@ -35,16 +36,6 @@ namespace Animal_Sanctuary.Tests
             Assert.AreEqual("animal Welfare", result);
         }
 
-
-
-
-
-
-
-
     }
-
-
-
 
     }
