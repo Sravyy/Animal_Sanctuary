@@ -42,5 +42,12 @@ namespace Animal_Sanctuary.Models.Repositories
             db.SaveChanges();
             return animal;
         }
+
+        public void ClearAll()
+        {
+            List<Animal> AllAnimals = db.Animals.ToList();
+            db.Animals.RemoveRange(AllAnimals);
+            db.SaveChanges();
+        }
     }
 }

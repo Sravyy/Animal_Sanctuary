@@ -12,8 +12,13 @@ using Animal_Sanctuary.Tests.Models;
 namespace Animal_Sanctuary.Tests.ControllerTests
 {
     [TestClass]
-    public class AnimalsControllerTests
-    {
+    public class AnimalsControllerTests : IDisposable
+    {       
+                public void Dispose()
+                {
+                    db.ClearAll();
+                }
+
             Mock<IAnimalRepository> mock = new Mock<IAnimalRepository>();
             EFAnimalRepository db = new EFAnimalRepository(new TestDbContext());
 
