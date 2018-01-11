@@ -31,9 +31,10 @@ namespace Animal_Sanctuary.Models
                 bool sex = this.Sex.Equals(newAnimal.Sex);
                 bool habitype = this.HabitatType.Equals(newAnimal.HabitatType);
                 bool medi = this.MedicalEmergency.Equals(newAnimal.MedicalEmergency);
+                bool veternId = this.VeterinarianId.Equals(newAnimal.VeterinarianId);
              
 
-                return (EqualId && EqualName && species && sex && habitype && medi);
+                return (EqualId && EqualName && species && sex && habitype && medi && veternId);
             }
         }
 

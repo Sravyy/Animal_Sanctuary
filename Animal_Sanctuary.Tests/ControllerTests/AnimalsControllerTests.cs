@@ -19,9 +19,9 @@ namespace Animal_Sanctuary.Tests.ControllerTests
             {
             mock.Setup(m => m.Animals).Returns(new Animal[]
             {
-                new Animal {AnimalId = 1, Name = "dog" , Species = "carnivore",Sex = "male",HabitatType = "land",MedicalEmergency = true },
-                new Animal { AnimalId = 2, Name = "cat", Species = "herbivore", Sex = "female", HabitatType = "forest", MedicalEmergency = false },
-                new Animal {AnimalId = 3, Name = "cow" , Species = "herbivore",Sex = "female",HabitatType = "home",MedicalEmergency = true}
+                new Animal {AnimalId = 1, Name = "dog" , Species = "carnivore",Sex = "male",HabitatType = "land",MedicalEmergency = true , VeterinarianId=1},
+                new Animal { AnimalId = 2, Name = "cat", Species = "herbivore", Sex = "female", HabitatType = "forest", MedicalEmergency = false , VeterinarianId=2},
+                new Animal {AnimalId = 3, Name = "cow" , Species = "herbivore",Sex = "female",HabitatType = "home",MedicalEmergency = true, VeterinarianId=1}
                 }.AsQueryable());
             }
 
@@ -40,7 +40,7 @@ namespace Animal_Sanctuary.Tests.ControllerTests
         }
 
         [ TestMethod]
-        public void Mock_IndexContainsModelData_List() // Confirms model as list of items
+        public void Mock_IndexContainsModelData_List() // Confirms model as list of animals
         {
             // Arrange
             DbSetup();
@@ -62,7 +62,7 @@ namespace Animal_Sanctuary.Tests.ControllerTests
             Animal testAnimal = new Animal();
             testAnimal.Name = "cow";
             testAnimal.AnimalId = 3;
-            testAnimal.Species = "herbivore";testAnimal.Sex = "female";testAnimal.HabitatType = "home";testAnimal.MedicalEmergency = true;
+            testAnimal.Species = "herbivore";testAnimal.Sex = "female";testAnimal.HabitatType = "home";testAnimal.MedicalEmergency = true;testAnimal.VeterinarianId = 1;
          
 
             // Act

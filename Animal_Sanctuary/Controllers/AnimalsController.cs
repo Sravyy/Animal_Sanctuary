@@ -28,7 +28,7 @@ namespace Animal_Sanctuary.Controllers
         public ViewResult Index()
         {
             // Updated:
-            return View(animalRepo.Animals.ToList());
+            return View(animalRepo.Animals.Include(animal=> animal.Veterinarian).ToList());
         }
 
         public IActionResult Details(int id)
@@ -39,7 +39,7 @@ namespace Animal_Sanctuary.Controllers
         }
 
         public IActionResult Create()
-        {
+        {   
             return View();
         }
 
