@@ -7,6 +7,7 @@ using Animal_Sanctuary.Models;
 using Animal_Sanctuary.Controllers;
 using System.Linq;
 using Animal_Sanctuary.Models.Repositories;
+using Animal_Sanctuary.Tests.Models;
 
 namespace Animal_Sanctuary.Tests.ControllerTests
 {
@@ -14,6 +15,7 @@ namespace Animal_Sanctuary.Tests.ControllerTests
     public class AnimalsControllerTests
     {
             Mock<IAnimalRepository> mock = new Mock<IAnimalRepository>();
+            EFAnimalRepository db = new EFAnimalRepository(new TestDbContext());
 
             private void DbSetup()
             {
@@ -118,6 +120,29 @@ namespace Animal_Sanctuary.Tests.ControllerTests
 
         }
 
+        [TestMethod]
+        public void DB_CreatesNewEntries_Collection()
+        {
+            // Arrange
+            AnimalsController controller = new AnimalsController(db);
+            Animal testAnimal = new Animal();
+            testAnimal.Name = "Test Animal";
+            testAnimal.MedicalEmergency = false;
+            testAnimal.VeterinarianId = 1;
+            testAnimal.Sex = "female";
+            testAnimal.Species = "NajaNaja";
+            testAnimal.HabitatType = "forest";
+          
+
+            // Act
+            controller.Create(testAnimal);
+            var collection = (controller.Index() as ViewResult).ViewData.Model as List<Animal>;
+
+            // Assert
+            CollectionAssert.Contains(collection, testAnimal);
+        }
+
+
 
         [TestMethod]
         public void Mock_GetDetails_ReturnsView()
@@ -142,7 +167,10 @@ namespace Animal_Sanctuary.Tests.ControllerTests
         }
 
 
+
+
     }
 
  }
+
 
